@@ -39,3 +39,43 @@ def convert(letter)
 end
 
 #*****************************************************************
+
+# https://www.codewars.com/kata/find-the-divisors/train/ruby
+
+# Create a function named divisors/Divisors that takes an integer n > 1 
+# and returns an array with all of the integer's divisors(except for 1 
+# and the number itself), from smallest to largest. If the number is 
+# prime return the string '(integer) is prime' 
+
+def divisors(n)
+    
+    numbers = (1..n).select { |number| n % number == 0}
+    if numbers.count > 2
+      return numbers.delete_if {|number| number == 1 || number == n}
+    else 
+      return "#{n} is prime"
+    end
+  
+  end
+   
+# --------- or ---------
+
+  def divisors(n)
+  
+    i = 1
+    numbers = []
+    while i < n
+      if n % i == 0
+        numbers.push(i)
+      end
+      i += 1
+    end
+    if numbers.count > 1
+      return numbers.delete_if {|number| number == 1}
+    else 
+      return "#{n} is prime"
+    end
+    
+  end
+
+#*****************************************************************
