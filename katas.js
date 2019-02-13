@@ -1,5 +1,19 @@
 /*****************************************************************/
 
+//https://www.codewars.com/kata/break-camelcase/train/javascript
+
+// Complete the solution so that the function will break up camel casing, using a space between words.
+
+// Example
+// solution('camelCasing') // => should return 'camel Casing'
+
+const solution = string => {
+  const camelled = Array.from(string).map(letter => /[A-Z]/.test(letter) ? ` ${letter}` : letter )
+  return camelled.join('')
+}
+
+/*****************************************************************/
+
 // https://www.codewars.com/kata/583203e6eb35d7980400002a/train/javascript
 
 // Given an array (arr) as an argument complete the function countSmileys that should return the total number of smiling faces.
