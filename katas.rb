@@ -1,4 +1,67 @@
 #*****************************************************************
+# https://www.codewars.com/kata/valid-parentheses/ruby
+
+# Write a function called that takes a string of parentheses, and determines if the order of the parentheses is valid. The function should return true if the string is valid, and false if it's invalid.
+
+# Examples
+# "()"              =>  true
+# ")(()))"          =>  false
+# "("               =>  false
+# "(())((()())())"  =>  true
+# Constraints
+# 0 <= input.length <= 100
+
+# Along with opening (() and closing ()) parenthesis, input may contain any valid ASCII characters. Furthermore, the input string may be empty and/or not contain any parentheses at all. Do not treat other forms of brackets as parentheses (e.g. [], {}, <>).
+
+def valid_parentheses(string)
+  
+  # if the string has 0 characters, return true
+  if string.empty?
+    return true
+  
+  # else, start evaluating string
+  else
+    parens = ""
+    
+    # strips extraneous characters, leaving only parentheses, puts in a variable parens
+    string.chars.each do |char|
+      if char == "(" || char == ")"
+        parens << char
+      end
+    end
+    
+    # check if parens starts with a ")" or ends with "(" 
+    if parens.start_with?(")") || parens.end_with?("(")
+      return false
+      # if it doesn't - evaluate remaining strings
+    end
+    
+    # determines if there are an equal # of parentheses in the string
+    parens_are_equal = 0
+    parens.chars.each do |paren|
+
+      if paren == "("
+        parens_are_equal += 1
+      else 
+        parens_are_equal -=1
+      end
+
+    end
+    
+    # if parenthese are equal, parens_are_equal will be 0
+    # if the aren't will be something else
+    if parens_are_equal == 0
+        return true
+      else
+        return false 
+      end
+
+  end
+  
+end
+
+
+#*****************************************************************
 
 # https://www.codewars.com/kata/ones-and-zeros/ruby
 
