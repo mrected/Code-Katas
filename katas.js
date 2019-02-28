@@ -1,5 +1,41 @@
 /*****************************************************************/
 
+//https://www.codewars.com/kata/extract-the-domain-name-from-a-url-1/train/javascript
+
+// Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. For example:
+
+// domainName("http://github.com/carbonfive/raygun") == "github" 
+// domainName("http://www.zombie-bites.com") == "zombie-bites"
+// domainName("https://www.cnet.com") == "cnet"
+
+const domainName = url => {
+  
+  url = url.replace(/https*:\/\//, '')
+  url = url.replace(/w{3}./, '')
+  url = url.replace(/\.(.*)/, '')
+  return url
+
+}
+
+/*****************************************************************/
+
+// https://www.codewars.com/kata/are-you-playing-banjo/javascript
+
+// Create a function which answers the question "Are you playing banjo?".
+// If your name starts with the letter "R" or lower case "r", you are playing banjo!
+
+// The function takes a name as its only argument, and returns one of the following strings:
+
+// name + " plays banjo" 
+// name + " does not play banjo"
+// Names given are always valid strings.
+
+const areYouPlayingBanjo = name => (
+  /^R/i.test(name) ? `${name} plays banjo` : `${name} does not play banjo`
+ )
+
+/*****************************************************************/
+
 //https://www.codewars.com/kata/rot13/
 
 // How can you tell an extrovert from an introvert at NSA? Va gur ryringbef, gur rkgebireg ybbxf ng gur BGURE thl'f fubrf.
