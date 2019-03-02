@@ -1,5 +1,52 @@
 /*****************************************************************/
 
+// https://www.codewars.com/kata/string-incrementer/javascript
+
+// Your job is to write a function which increments a string, 
+// to create a new string. If the string already ends with a number,
+// the number should be incremented by 1. If the string does not 
+// end with a number the number 1 should be appended to the new string.
+
+// Examples:
+
+// foo -> foo1
+
+// foobar23 -> foobar24
+
+// foo0042 -> foo0043
+
+// foo9 -> foo10
+
+// foo099 -> foo100
+
+// Attention: If the number has leading zeros the amount of digits should be considered.
+
+// if there are numbers in the string, run hasNumbers(), else just add 1 and return the result
+const incrementString = string => /\d/.test(string) ? hasNumbers(string) : string + 1
+
+// processes string if there are numbers present
+const hasNumbers = string => (
+
+// regex uses replace() to pass all numbers found to function as a string and replace
+// them incremented by 1
+  string.replace(/\d+/, numbers => {
+    // stores the initial length of the string
+    const length = numbers.length
+    // converts numbers to a number, adds 1, converts back to a string
+    numbers = (parseInt(numbers) + 1) + ''
+    // uses initial length to compare to current length
+    // if current length is less than initial length
+    // replaces 0's until initial length is reach again
+    while(numbers.length < length){
+      numbers = "0" + numbers
+    }
+    // returns the full string, incremented to add to the initial string
+    return numbers
+  })
+)
+
+/*****************************************************************/
+
 //https://www.codewars.com/kata/extract-the-domain-name-from-a-url-1/train/javascript
 
 // Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. For example:
